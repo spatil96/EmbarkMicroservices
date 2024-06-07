@@ -1,5 +1,7 @@
 package com.embarkx.FirstSpring.job;
 
+import java.io.Serial;
+
 public class Job {
     private long id;
     private String title;
@@ -9,6 +11,7 @@ public class Job {
     private String location;
 
     public Job(long id, String title, String description, String minSalary, String maxSalary, String location) {
+
         this.id = id;
         this.title = title;
         this.description = description;
