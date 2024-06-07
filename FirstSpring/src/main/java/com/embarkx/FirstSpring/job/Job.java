@@ -1,7 +1,5 @@
 package com.embarkx.FirstSpring.job;
 
-import java.io.Serial;
-
 public class Job {
     private long id;
     private String title;
@@ -9,6 +7,18 @@ public class Job {
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", minSalary='" + minSalary + '\'' +
+                ", maxSalary='" + maxSalary + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 
     public Job(long id, String title, String description, String minSalary, String maxSalary, String location) {
 
