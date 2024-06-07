@@ -1,12 +1,21 @@
 package com.embarkx.FirstSpring.job;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="job_table")
 public class Job {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    public Job() {
+    }
 
     @Override
     public String toString() {
