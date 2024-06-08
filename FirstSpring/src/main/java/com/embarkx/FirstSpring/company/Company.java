@@ -1,6 +1,7 @@
 package com.embarkx.FirstSpring.company;
 
 import com.embarkx.FirstSpring.job.Job;
+import com.embarkx.FirstSpring.review.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -15,7 +16,13 @@ public class Company {
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
-//    private List<Reviews> reviews;
+    @OneToMany(mappedBy = "company")
+    @JsonIgnore
+    private List<Review> reviews;
+
+    public Company(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     public Company() {
     }
