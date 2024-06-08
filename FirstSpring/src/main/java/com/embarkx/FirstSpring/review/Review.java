@@ -11,17 +11,20 @@ public class Review {
     private String title;
     private String description;
     private double rating;
-    private Long companyId;
+
+    @JsonIgnore
+    @ManyToOne
+    private Company company;
 
     public Review() {
     }
 
-    public Long getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public Long getId() {

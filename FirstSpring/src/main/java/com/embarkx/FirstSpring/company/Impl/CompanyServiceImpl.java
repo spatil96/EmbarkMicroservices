@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
-private CompanyRepository companyRepository;
+    private CompanyRepository companyRepository;
 
     public CompanyServiceImpl(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
@@ -24,15 +24,16 @@ private CompanyRepository companyRepository;
     @Override
     public boolean updateCompany(Company company, Long id) {
         Optional<Company> companyOptional = companyRepository.findById(id);
-        if(companyOptional.isPresent()){
+        if (companyOptional.isPresent()) {
             Company companyToUpdate = companyOptional.get();
-           companyToUpdate.setDescription(company.getDescription());
-           companyToUpdate.setName(company.getName());
-//           companyToUpdate.setJobs(company.getJobs());
+            companyToUpdate.setDescription(company.getDescription());
+            companyToUpdate.setName(company.getName());
+            companyToUpdate.setJobs(company.getJobs());
             companyRepository.save(companyToUpdate);
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -45,7 +46,14 @@ private CompanyRepository companyRepository;
         if(companyRepository.existsById(id)) {
             companyRepository.deleteById(id);
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
+
+    @Override
+    public Company getCompanyById(Long id) {
+        return companyRepository.findById(id).orElse(null);
+    }
+
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
+
 @Entity
 public class Company {
     @Id
@@ -13,18 +14,23 @@ public class Company {
     private Long id;
     private String name;
     private String description;
+
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
+
     @OneToMany(mappedBy = "company")
-    @JsonIgnore
     private List<Review> reviews;
 
-    public Company(List<Review> reviews) {
-        this.reviews = reviews;
+    public Company() {
     }
 
-    public Company() {
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Long getId() {

@@ -4,21 +4,31 @@ import com.embarkx.FirstSpring.company.Company;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="job_table")
+//@Table(name = "job_table")
 public class Job {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
 
-    public Job() {
-    }
     @ManyToOne
     private Company company;
+
+    public Job() {
+    }
+
+    public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.minSalary = minSalary;
+        this.maxSalary = maxSalary;
+        this.location = location;
+    }
 
     public Company getCompany() {
         return company;
@@ -28,33 +38,11 @@ public class Job {
         this.company = company;
     }
 
-    @Override
-    public String toString() {
-        return "Job{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", minSalary='" + minSalary + '\'' +
-                ", maxSalary='" + maxSalary + '\'' +
-                ", location='" + location + '\'' +
-                '}';
-    }
-
-    public Job(long id, String title, String description, String minSalary, String maxSalary, String location) {
-
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.minSalary = minSalary;
-        this.maxSalary = maxSalary;
-        this.location = location;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
