@@ -3,7 +3,6 @@ package com.embarkx.FirstSpring.company.Impl;
 import com.embarkx.FirstSpring.company.Company;
 import com.embarkx.FirstSpring.company.CompanyRepository;
 import com.embarkx.FirstSpring.company.CompanyService;
-import com.embarkx.FirstSpring.job.Job;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +28,7 @@ private CompanyRepository companyRepository;
             Company companyToUpdate = companyOptional.get();
            companyToUpdate.setDescription(company.getDescription());
            companyToUpdate.setName(company.getName());
-           companyToUpdate.setJobs(company.getJobs());
+//           companyToUpdate.setJobs(company.getJobs());
             companyRepository.save(companyToUpdate);
             return true;
         }
@@ -39,5 +38,14 @@ private CompanyRepository companyRepository;
     @Override
     public void createCompany(Company company) {
         companyRepository.save(company);
+    }
+
+    @Override
+    public boolean deleteCompanyById(Long id) {
+        if(companyRepository.existsById(id)) {
+            companyRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

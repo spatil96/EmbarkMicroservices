@@ -1,5 +1,6 @@
 package com.embarkx.FirstSpring.job;
 
+import com.embarkx.FirstSpring.company.Company;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +16,16 @@ public class Job {
     private String location;
 
     public Job() {
+    }
+    @ManyToOne
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
