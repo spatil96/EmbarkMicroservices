@@ -37,7 +37,7 @@ private CompanyRepository companyRepository;
     }
 
     @Override
-    public void createJob(Company company) {
+    public void createCompany(Company company) {
         companyRepository.save(company);
     }
 }

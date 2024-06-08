@@ -16,8 +16,8 @@ public class CompanyController {
     }
 
     @GetMapping
-    public List<Company> getAllCompanies(){
-        return companyService.getAllCompanies();
+    public ResponseEntity<Company> getAllCompanies(){
+        return new ResponseEntity<Company>((Company) companyService.getAllCompanies(),HttpStatus.OK);
     }
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCompany(@PathVariable Company company, Long id){
@@ -26,7 +26,7 @@ public class CompanyController {
     }
     @PutMapping
     public ResponseEntity<String> addCompany(@RequestBody Company company){
-        companyService.createJob(company);
+        companyService.createCompany(company);
         return new ResponseEntity<>("Company Added successfully", HttpStatus.CREATED);
     }
 }
